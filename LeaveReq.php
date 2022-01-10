@@ -37,7 +37,7 @@ class LeaveReq
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->roll_no = htmlspecialchars(strip_tags($this->roll_no));
         $this->level = htmlspecialchars(strip_tags($this->level));
-        $this->leave_date = htmlspecialchars(strip_tags($this->leave_date));
+        // $this->leave_date = htmlspecialchars(strip_tags($this->leave_date));
         $this->status = htmlspecialchars(strip_tags($this->status));
         $this->req_reason = htmlspecialchars(strip_tags($this->req_reason));
         $this->acc_rej_reason = htmlspecialchars(strip_tags($this->acc_rej_reason));
