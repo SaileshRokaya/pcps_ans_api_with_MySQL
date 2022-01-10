@@ -10,20 +10,17 @@ $items = new Event($db);
 $records = $items->getEvents();
 $itemCount = $records->num_rows;
 // echo json_encode($itemCount);
-if($itemCount > 0){
-$eventArr = array();
-$eventArr["body"] = array();
-$eventArr["itemCount"] = $itemCount;
-while ($row = $records->fetch_assoc())
-{
-array_push($eventArr["body"], $row);
+if ($itemCount > 0) {
+    $eventArr = array();
+    $eventArr["body"] = array();
+    $eventArr["itemCount"] = $itemCount;
+    while ($row = $records->fetch_assoc()) {
+        array_push($eventArr["body"], $row);
+    }
+    echo json_encode($eventArr);
+} else {
+    http_response_code(404);
+    echo json_encode(
+        array("message" => "No record found.")
+    );
 }
-echo json_encode($eventArr);
-}
-else{
-http_response_code(404);
-echo json_encode(
-array("message" => "No record found.")
-);
-}
-?>

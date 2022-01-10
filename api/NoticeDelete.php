@@ -14,9 +14,8 @@ $item = new Notice($db);
 
 $item->id = isset($_GET['id']) ? $_GET['id'] : die("No data found");
 
-if($item->deleteNotice()){
-echo json_encode("Notice deleted.");
-} else{
-echo json_encode("Data could not be deleted");
+if ($item->deleteNotice()) {
+    echo json_encode("Notice deleted.");
+} else {
+    echo json_encode("Data could not be deleted");
 }
-?>

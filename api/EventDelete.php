@@ -14,9 +14,8 @@ $item = new Event($db);
 
 $item->id = isset($_GET['id']) ? $_GET['id'] : die("No data found");
 
-if($item->deleteEvent()){
-echo json_encode("Event deleted.");
-} else{
-echo json_encode("Data could not be deleted");
+if ($item->deleteEvent()) {
+    echo json_encode("Event deleted.");
+} else {
+    echo json_encode("Data could not be deleted");
 }
-?>

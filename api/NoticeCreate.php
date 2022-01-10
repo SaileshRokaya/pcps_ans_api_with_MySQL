@@ -14,9 +14,8 @@ $item = new Notice($db);
 $item->notice_title = $_POST['notice_title'];
 $item->notice_message = $_POST['notice_message'];
 // $item->notice_created = $_POST['notice_created'];
-if($item->createNotices()){
-echo 'Notice created successfully.';
-} else{
-echo 'Notice could not be created.';
+if ($item->createNotices()) {
+    echo 'Notice created successfully.';
+} else {
+    echo 'Notice could not be created.';
 }
-?>

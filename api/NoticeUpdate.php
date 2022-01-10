@@ -16,9 +16,8 @@ $item->id = isset($_POST['id']) ? $_POST['id'] : die();
 $item->notice_title = $_POST['notice_title'];
 $item->notice_message = $_POST['notice_message'];
 $item->notice_created = $_POST['notice_created'];
-if($item->updateNotice()){
-echo json_encode("Notice data updated.");
-} else{
-echo json_encode("Data could not be updated");
+if ($item->updateNotice()) {
+    echo json_encode("Notice data updated.");
+} else {
+    echo json_encode("Data could not be updated");
 }
-?>

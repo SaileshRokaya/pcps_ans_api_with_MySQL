@@ -11,21 +11,19 @@ $db = $database->getConnection();
 $item = new Notice($db);
 $item->id = isset($_GET['id']) ? $_GET['id'] : die();
 $item->getSingleNotice();
-if($item->notice_title != null){
+if ($item->notice_title != null) {
 
-// create array
-$notic_arr = array(
-"id" => $item->id,
-"notice_title" => $item->notice_title,
-"notice_message" => $item->notice_message,
-"notice_created" => $item->notice_created
-);
+    // create array
+    $notic_arr = array(
+        "id" => $item->id,
+        "notice_title" => $item->notice_title,
+        "notice_message" => $item->notice_message,
+        "notice_created" => $item->notice_created
+    );
 
-http_response_code(200);
-echo json_encode($notic_arr);
+    http_response_code(200);
+    echo json_encode($notic_arr);
+} else {
+    http_response_code(404);
+    echo json_encode("Notice not found.");
 }
-else{
-http_response_code(404);
-echo json_encode("Notice not found.");
-}
-?>

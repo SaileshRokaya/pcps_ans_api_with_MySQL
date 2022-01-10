@@ -10,20 +10,17 @@ $items = new Notice($db);
 $records = $items->getNotices();
 $itemCount = $records->num_rows;
 // echo json_encode($itemCount);
-if($itemCount > 0){
-$noticeArr = array();
-$noticeArr["body"] = array();
-$noticeArr["itemCount"] = $itemCount;
-while ($row = $records->fetch_assoc())
-{
-array_push($noticeArr["body"], $row);
+if ($itemCount > 0) {
+    $noticeArr = array();
+    $noticeArr["body"] = array();
+    $noticeArr["itemCount"] = $itemCount;
+    while ($row = $records->fetch_assoc()) {
+        array_push($noticeArr["body"], $row);
+    }
+    echo json_encode($noticeArr);
+} else {
+    http_response_code(404);
+    echo json_encode(
+        array("message" => "No record found.")
+    );
 }
-echo json_encode($noticeArr);
-}
-else{
-http_response_code(404);
-echo json_encode(
-array("message" => "No record found.")
-);
-}
-?>
