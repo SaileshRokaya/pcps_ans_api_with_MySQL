@@ -59,6 +59,7 @@ $this->id=htmlspecialchars(strip_tags($this->id));
 $sqlQuery = "UPDATE ". $this->db_table ." SET event_title = '".$this->event_title."',
 event_message = '".$this->event_message."' , event_created = '".$this->event_created."'
 WHERE id = ".$this->id;
+echo("$sqlQuery");
 
 $this->db->query($sqlQuery);
 if($this->db->affected_rows > 0){

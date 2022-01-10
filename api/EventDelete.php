@@ -12,7 +12,7 @@ $database = new Database();
 $db = $database->getConnection();
 $item = new Event($db);
 
-$item->id = isset($_GET['id']) ? $_GET['id'] : die();
+$item->id = isset($_GET['id']) ? $_GET['id'] : die("No data found");
 
 if($item->deleteEvent()){
 echo json_encode("Event deleted.");
