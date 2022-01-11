@@ -20,6 +20,7 @@ $item->leave_date = $_POST['leave_date'];
 $item->status = $_POST['status'];
 $item->req_reason = $_POST['req_reason'];
 $item->acc_rej_reason = $_POST['acc_rej_reason'];
+$item->course = $_POST['course'];
 if ($item->updateLeaveReq()) {
     echo json_encode("Data updated.");
 } else {

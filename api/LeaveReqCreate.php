@@ -18,6 +18,7 @@ $item->level = $_POST['level'];
 $item->status = $_POST['status'];
 $item->req_reason = $_POST['req_reason'];
 $item->acc_rej_reason = $_POST['acc_rej_reason'];
+$item->course = $_POST['course'];
 
 if ($item->createLeaveReq()) {
     echo 'Leave Req created successfully.';

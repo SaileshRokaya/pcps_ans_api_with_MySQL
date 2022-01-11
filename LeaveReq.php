@@ -14,6 +14,7 @@ class LeaveReq
     public $status;
     public $req_reason;
     public $acc_rej_reason;
+    public $course;
 
 
     // Db dbection
@@ -25,7 +26,7 @@ class LeaveReq
     // GET ALL
     public function getLeaveReq()
     {
-        $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason  FROM " . $this->db_table . "";
+        $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason, course  FROM " . $this->db_table . "";
         $this->result = $this->db->query($sqlQuery);
         return $this->result;
     }
@@ -41,11 +42,12 @@ class LeaveReq
         $this->status = htmlspecialchars(strip_tags($this->status));
         $this->req_reason = htmlspecialchars(strip_tags($this->req_reason));
         $this->acc_rej_reason = htmlspecialchars(strip_tags($this->acc_rej_reason));
+        $this->course = htmlspecialchars(strip_tags($this->course));
 
         $sqlQuery = "INSERT INTO
     " . $this->db_table . " SET name = '" . $this->name . "', roll_no = '" . $this->roll_no . "', 
     level = '" . $this->level . "', leave_date = '" . $this->leave_date . "', status = '" . $this->status . "', 
-    req_reason = '" . $this->req_reason . "', acc_rej_reason = '" . $this->acc_rej_reason . "'";
+    req_reason = '" . $this->req_reason . "', acc_rej_reason = '" . $this->acc_rej_reason . "', course = '" . $this->course . "'";
         $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
             return true;
@@ -67,6 +69,7 @@ class LeaveReq
         $this->status = $dataRow['status'];
         $this->req_reason = $dataRow['req_reason'];
         $this->acc_rej_reason = $dataRow['acc_rej_reason'];
+        $this->course = $dataRow['course'];
     }
 
     // UPDATE
@@ -79,11 +82,12 @@ class LeaveReq
         $this->status = htmlspecialchars(strip_tags($this->status));
         $this->req_reason = htmlspecialchars(strip_tags($this->req_reason));
         $this->acc_rej_reason = htmlspecialchars(strip_tags($this->acc_rej_reason));
+        $this->course = htmlspecialchars(strip_tags($this->course));
         $this->id = htmlspecialchars(strip_tags($this->id));
 
         $sqlQuery = "UPDATE " . $this->db_table . " SET name = '" . $this->name . "', roll_no = '" . $this->roll_no . "', 
         level = '" . $this->level . "', leave_date = '" . $this->leave_date . "', status = '" . $this->status . "', 
-        req_reason = '" . $this->req_reason . "', acc_rej_reason = '" . $this->acc_rej_reason . "'
+        req_reason = '" . $this->req_reason . "', acc_rej_reason = '" . $this->acc_rej_reason . "', course = '" . $this->course . "'
         WHERE id = " . $this->id;
         echo ("$sqlQuery");
 
