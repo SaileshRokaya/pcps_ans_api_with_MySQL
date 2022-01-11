@@ -10,7 +10,7 @@ $database = new Database();
 $db = $database->getConnection();
 $item = new LeaveReq($db);
 $item->id = isset($_GET['id']) ? $_GET['id'] : die();
-$item->getSingleLeaveReq();
+$item->getSingleLeaveReqByPending();
 if ($item->name != null) {
 
     // create array

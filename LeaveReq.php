@@ -72,6 +72,57 @@ class LeaveReq
         $this->course = $dataRow['course'];
     }
 
+    // GetSingleDataByPending
+    public function getSingleLeaveReqByPending()
+    {
+        $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason FROM
+        " . $this->db_table . " WHERE status = 'Pending'";
+        $record = $this->db->query($sqlQuery);
+        $dataRow = $record->fetch_assoc();
+        $this->name = $dataRow['name'];
+        $this->roll_no = $dataRow['roll_no'];
+        $this->level = $dataRow['level'];
+        $this->leave_date = $dataRow['leave_date'];
+        $this->status = $dataRow['status'];
+        $this->req_reason = $dataRow['req_reason'];
+        $this->acc_rej_reason = $dataRow['acc_rej_reason'];
+        $this->course = $dataRow['course'];
+    }
+
+    // GetSingleDataByAccept
+    public function getSingleLeaveReqByAccept()
+    {
+        $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason FROM
+        " . $this->db_table . " WHERE status = 'Accept'";
+        $record = $this->db->query($sqlQuery);
+        $dataRow = $record->fetch_assoc();
+        $this->name = $dataRow['name'];
+        $this->roll_no = $dataRow['roll_no'];
+        $this->level = $dataRow['level'];
+        $this->leave_date = $dataRow['leave_date'];
+        $this->status = $dataRow['status'];
+        $this->req_reason = $dataRow['req_reason'];
+        $this->acc_rej_reason = $dataRow['acc_rej_reason'];
+        $this->course = $dataRow['course'];
+    }
+
+    // GetSingleDataByReject
+    public function getSingleLeaveReqByReject()
+    {
+        $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason FROM
+        " . $this->db_table . " WHERE status = 'Reject'";
+        $record = $this->db->query($sqlQuery);
+        $dataRow = $record->fetch_assoc();
+        $this->name = $dataRow['name'];
+        $this->roll_no = $dataRow['roll_no'];
+        $this->level = $dataRow['level'];
+        $this->leave_date = $dataRow['leave_date'];
+        $this->status = $dataRow['status'];
+        $this->req_reason = $dataRow['req_reason'];
+        $this->acc_rej_reason = $dataRow['acc_rej_reason'];
+        $this->course = $dataRow['course'];
+    }
+
     // UPDATE
     public function updateLeaveReq()
     {
