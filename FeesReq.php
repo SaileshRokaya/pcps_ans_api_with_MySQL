@@ -1,16 +1,16 @@
 <?php
-class LeaveReq
+class FeesReq
 {
     // dbection
     private $db;
     // Table
-    private $db_table = "leave_req";
+    private $db_table = "fees_req";
     // Columns
     public $id;
     public $name;
     public $roll_no;
     public $level;
-    public $leave_date;
+    public $fees_date;
     public $status;
     public $req_reason;
     public $acc_rej_reason;
@@ -24,21 +24,21 @@ class LeaveReq
     }
 
     // GET ALL
-    public function getLeaveReq()
+    public function getFeesReq()
     {
-        $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason, course  FROM " . $this->db_table . "";
+        $sqlQuery = "SELECT id, name, roll_no, level, fees_date, status, req_reason, acc_rej_reason, course  FROM " . $this->db_table . "";
         $this->result = $this->db->query($sqlQuery);
         return $this->result;
     }
 
     // CREATE
-    public function createLeaveReq()
+    public function createFeesReq()
     {
         // sanitize
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->roll_no = htmlspecialchars(strip_tags($this->roll_no));
         $this->level = htmlspecialchars(strip_tags($this->level));
-        // $this->leave_date = htmlspecialchars(strip_tags($this->leave_date));
+        // $this->fees_date = htmlspecialchars(strip_tags($this->fees_date));
         $this->status = htmlspecialchars(strip_tags($this->status));
         $this->req_reason = htmlspecialchars(strip_tags($this->req_reason));
         $this->acc_rej_reason = htmlspecialchars(strip_tags($this->acc_rej_reason));
@@ -46,7 +46,7 @@ class LeaveReq
 
         $sqlQuery = "INSERT INTO
     " . $this->db_table . " SET name = '" . $this->name . "', roll_no = '" . $this->roll_no . "', 
-    level = '" . $this->level . "', leave_date = '" . $this->leave_date . "', status = '" . $this->status . "', 
+    level = '" . $this->level . "', fees_date = '" . $this->fees_date . "', status = '" . $this->status . "', 
     req_reason = '" . $this->req_reason . "', acc_rej_reason = '" . $this->acc_rej_reason . "', course = '" . $this->course . "'";
         $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
@@ -56,16 +56,16 @@ class LeaveReq
     }
 
     // GetSingleData
-    public function getSingleLeaveReq()
+    public function getSingleFeesReq()
     {
-        $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason FROM
+        $sqlQuery = "SELECT id, name, roll_no, level, fees_date, status, req_reason, acc_rej_reason FROM
         " . $this->db_table . " WHERE id = " . $this->id;
         $record = $this->db->query($sqlQuery);
         $dataRow = $record->fetch_assoc();
         $this->name = $dataRow['name'];
         $this->roll_no = $dataRow['roll_no'];
         $this->level = $dataRow['level'];
-        $this->leave_date = $dataRow['leave_date'];
+        $this->fees_date = $dataRow['fees_date'];
         $this->status = $dataRow['status'];
         $this->req_reason = $dataRow['req_reason'];
         $this->acc_rej_reason = $dataRow['acc_rej_reason'];
@@ -74,10 +74,10 @@ class LeaveReq
 
 
     // // GetSingleDataByAccept
-    // public function getSingleLeaveReqByStatus()
+    // public function getSingleFeesReqByStatus()
     // {
     //     $this->status='Reject';
-    //     // $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason, course FROM
+    //     // $sqlQuery = "SELECT id, name, roll_no, level, fees_date, status, req_reason, acc_rej_reason, course FROM
     //     // " . $this->db_table . " WHERE status = '". $this->status."'";
         
     //     // $record = $this->db->query($sqlQuery);
@@ -85,13 +85,13 @@ class LeaveReq
     //     // $this->name = $dataRow['name'];
     //     // $this->roll_no = $dataRow['roll_no'];
     //     // $this->level = $dataRow['level'];
-    //     // $this->leave_date = $dataRow['leave_date'];
+    //     // $this->fees_date = $dataRow['fees_date'];
     //     // $this->status = $dataRow['status'];
     //     // $this->req_reason = $dataRow['req_reason'];
     //     // $this->acc_rej_reason = $dataRow['acc_rej_reason'];
     //     // $this->course = $dataRow['course'];
 
-    //     $sqlQuery = "SELECT id, name, roll_no, level, leave_date, status, req_reason, acc_rej_reason, course  FROM " . $this->db_table . " WHERE status = '". $this->status."'";
+    //     $sqlQuery = "SELECT id, name, roll_no, level, fees_date, status, req_reason, acc_rej_reason, course  FROM " . $this->db_table . " WHERE status = '". $this->status."'";
     //     $this->result = $this->db->query($sqlQuery);
     //     echo $sqlQuery.'<br>';
     //     $record = $this->db->query($sqlQuery);
@@ -99,7 +99,7 @@ class LeaveReq
     //     $this->name = $dataRow['name'];
     //     $this->roll_no = $dataRow['roll_no'];
     //     $this->level = $dataRow['level'];
-    //     $this->leave_date = $dataRow['leave_date'];
+    //     $this->fees_date = $dataRow['fees_date'];
     //     $this->status = $dataRow['status'];
     //     $this->req_reason = $dataRow['req_reason'];
     //     $this->acc_rej_reason = $dataRow['acc_rej_reason'];
@@ -109,12 +109,12 @@ class LeaveReq
 
 
     // UPDATE
-    public function updateLeaveReq()
+    public function updateFeesReq()
     {
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->roll_no = htmlspecialchars(strip_tags($this->roll_no));
         $this->level = htmlspecialchars(strip_tags($this->level));
-        $this->leave_date = htmlspecialchars(strip_tags($this->leave_date));
+        $this->fees_date = htmlspecialchars(strip_tags($this->fees_date));
         $this->status = htmlspecialchars(strip_tags($this->status));
         $this->req_reason = htmlspecialchars(strip_tags($this->req_reason));
         $this->acc_rej_reason = htmlspecialchars(strip_tags($this->acc_rej_reason));
@@ -122,7 +122,7 @@ class LeaveReq
         $this->id = htmlspecialchars(strip_tags($this->id));
 
         $sqlQuery = "UPDATE " . $this->db_table . " SET name = '" . $this->name . "', roll_no = '" . $this->roll_no . "', 
-        level = '" . $this->level . "', leave_date = '" . $this->leave_date . "', status = '" . $this->status . "', 
+        level = '" . $this->level . "', fees_date = '" . $this->fees_date . "', status = '" . $this->status . "', 
         req_reason = '" . $this->req_reason . "', acc_rej_reason = '" . $this->acc_rej_reason . "', course = '" . $this->course . "'
         WHERE id = " . $this->id;
         echo ("$sqlQuery");
@@ -154,7 +154,7 @@ class LeaveReq
     }
 
     // DELETE
-    function deleteLeaveReq()
+    function deleteFeesReq()
     {
         $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = " . $this->id;
         $this->db->query($sqlQuery);
